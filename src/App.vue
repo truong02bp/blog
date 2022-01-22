@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <Menu />
+  <div class="container">
+    <AddTask :add-task=addTask style="margin-bottom: 20px"/>
+    <TaskList :tasks="tasks"/>
+  </div>
 </template>
 
 <script>
-import Menu from './components/Menu'
+import TaskList from './components/TaskList'
+import AddTask from './components/AddTask'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      tasks: []
+    }
+  },
   components: {
-    Menu,
+    TaskList,
+    AddTask
+  },
+  methods: {
+    addTask(task) {
+      this.tasks.push({"name": task, "done": false});
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-items: start;
+  align-items: start;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 100px;
+  margin-left: 500px;
 }
 </style>
