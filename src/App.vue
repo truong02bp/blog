@@ -1,14 +1,13 @@
 <template>
   <div class="container">
-    <AddTask :add-task=addTask style="margin-bottom: 20px"/>
-    <TaskList :tasks="tasks"/>
+    <AddTask/>
+    <ListTask/>
   </div>
 </template>
 
 <script>
-import TaskList from './components/TaskList'
-import AddTask from './components/AddTask'
-
+import AddTask from "@/components/AddTask";
+import ListTask from "@/components/ListTask";
 export default {
   name: 'App',
   data() {
@@ -17,26 +16,15 @@ export default {
     }
   },
   components: {
-    TaskList,
-    AddTask
+    AddTask,
+    ListTask
   },
   methods: {
-    addTask(task) {
-      this.tasks.push({"name": task, "done": false});
-    }
+
   }
 }
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-items: start;
-  align-items: start;
-  width: 100vw;
-  height: 100vh;
-  margin-top: 100px;
-  margin-left: 500px;
-}
+
 </style>

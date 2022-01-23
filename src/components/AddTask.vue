@@ -1,29 +1,25 @@
 <template>
   <div>
-    <input type="text" v-model="task" style="margin-right: 20px; height: 30px; width: 300px">
-    <button type="submit" style="height: 35px; width: 80px" @click="onSubmit">Add task</button>
+    <input type="text" v-model="task" style="height:30px; width:300px"/>
+    <button type="submit" style="height:35px; width:80px; margin-left:30px" @click="addTask(task)">Add task</button>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: "AddTask",
-  props: {
-    addTask: Function,
-  },
   data() {
     return {
       task: ""
     }
   },
   methods: {
-    onSubmit() {
-      this.$props.addTask(this.task);
-      this.task = "";
-    }
+    ...mapActions(['addTask'])
   }
 }
 </script>
 
 <style scoped>
+
 </style>
